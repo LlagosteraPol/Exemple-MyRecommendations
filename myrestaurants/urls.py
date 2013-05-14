@@ -61,4 +61,4 @@ urlpatterns = patterns('',
 	url(r'^restaurant/(?P<pk>\d+)/reviews/create/$',
 		'myrestaurants.views.review',
 		name='review_create'),
-		)
+)
