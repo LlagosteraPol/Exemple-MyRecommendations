@@ -20,7 +20,8 @@ class RestaurantCreate(CreateView):
 	template_name = 'myrestaurants/form.html'
 	form_class = RestaurantForm
 
-	def form_valid(self, form): form.instance.user = self.request.user
+	def form_valid(self, form): 
+		form.instance.user = self.request.user
 		return super(RestaurantCreate, self).form_valid(form)
 
 class DishCreate(CreateView):
@@ -40,5 +41,5 @@ class DishCreate(CreateView):
 			comment=request.POST['comment'],
 			user=request.user,
 			restaurant=restaurant)
-			review.save()
+		review.save()
 		return HttpResponseRedirect(reverse('myrestaurants:restaurant_detail', args=(restaurant.id,)))

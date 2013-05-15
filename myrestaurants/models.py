@@ -13,7 +13,8 @@ class Restaurant(models.Model):
 	country=models.TextField(blank=True,null=True)
 	telephone=models.TextField(blank=True,null=True)
 	url=models.URLField(blank=True,null=True)
-	user=models.ForeignKey(User,default=User.objects.get(id=1))
+	#user=models.ForeignKey(User,default=User.objects.get(id=1))
+	user=models.ForeignKey(User,blank=True,null=True)
 	date=models.DateField(default=date.today)
 
 	def __unicode__(self):
@@ -26,7 +27,7 @@ class Dish(models.Model):
 	name=models.TextField()
 	description=models.TextField(blank=True,null=True)
 	price=models.DecimalField('Euro amount', max_digits=8, decimal_places=2, blank=True, null=True)
-	user=models.ForeignKey(User, default=User.objects.get(id=1))
+	user=models.ForeignKey(User, blank=True,null=True)
 	date=models.DateField(default=date.today)
 	restaurant=models.ForeignKey(Restaurant,null=True)
 
@@ -40,7 +41,7 @@ class Review(models.Model):
 	RATING_CHOICES=((1,'one'), (2,'two'), (3, 'three'), (4,'four'), (5,'five'))
 	rating=models.PositiveSmallIntegerField('Rating(stars)',blank=False, default=3, choices=RATING_CHOICES)
 	comment=models.TextField(blank=True, null=True)
-	user=models.ForeignKey(User, default=User.objects.get(id=1))
+	user=models.ForeignKey(User, blank=True,null=True)
 	date=models.DateField(default=date.today)
 
 	class Meta:
